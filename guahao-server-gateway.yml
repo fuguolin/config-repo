@@ -1,0 +1,28 @@
+server:
+  port: 8060
+management:
+  security:
+    enabled: false
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+zuul:
+  ignoredServices: '*'
+  routes:
+    service-auth:
+      path: /guahao-service-auth/**
+      stripPrefix: false
+      sensitiveHeaders: null
+    service-file:
+      path: /guahao-service-file/**
+      sensitiveHeaders: null
+    service-core:
+      path: /guahao-service-core/**
+      sensitiveHeaders: null
